@@ -1,46 +1,50 @@
 import React from 'react';
-import {Text, View, StyleSheet, Image, Button} from 'react-native';
+import {Text, View, StyleSheet, Image} from 'react-native';
+
+import Logo from './commons/Logo';
+import Button from './commons/Button';
+import OutlineButton from './commons/OutlineButton';
 
 class Accepted extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>DARE . INC</Text>
-        <Image style={styles.image} source={require('./Images/street.jpg')} />
+        <Logo />
+        <Image style={styles.image} source={require('./Images/selfie.jpg')} />
         <Text style={styles.cardtitle}> Dare Card #1 </Text>
         <Text style={styles.description}>
-          Description: This is a description.
+          Description: Lorem epsum is simply dummy text of the printing and
+          typesetting industry. Lorem ipsum has been the industry.
         </Text>
-        <Button style={styles.button} title="DARES ACCEPTED" color="green" />
-        <Text style={styles.footer}>BACK TO DARE</Text>
+        <View style={styles.buttonbox}>
+          <Button> DARE ACCEPTED</Button>
+        </View>
+
+        <View style={styles.footer}>
+          <OutlineButton> BACK TO DARE</OutlineButton>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  title: {
-    // flex: 1,
-    color: 'green',
-    fontWeight: 'bold',
-    fontSize: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    // flexDirection: 'column',
-  },
   container: {
-    width: 350,
-    height: 10,
-    flex: 1,
+    width: 360,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'black',
+    flex: 1,
   },
   image: {
-    height: 300,
-    width: 300,
+    height: 200,
+    width: 320,
     alignItems: 'center',
     justifyContent: 'center',
+    flex: 1,
+    marginTop: -160,
+    marginBottom: 160,
+    borderRadius: 30,
   },
   cardtitle: {
     color: 'white',
@@ -48,21 +52,33 @@ const styles = StyleSheet.create({
     fontSize: 30,
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: -160,
+    marginBottom: 160,
   },
   description: {
+    width: 300,
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  footer: {
-    color: 'green',
     fontSize: 15,
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: -160,
+    marginBottom: 160,
+    padding: 10,
   },
-  button: {},
+  buttonbox: {
+    marginTop: -160,
+    marginBottom: -20,
+    borderBottomEndRadius: 100,
+    width: 320,
+  },
+  footer: {
+    color: '#3CDA88',
+    fontSize: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
+  },
 });
 
 export default Accepted;
