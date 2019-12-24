@@ -10,7 +10,7 @@ class Accepted extends React.Component {
     return (
       <View style={styles.container}>
         <Logo />
-        <Image style={styles.image} source={require('./Images/selfie.jpg')} />
+        <Image style={styles.image} source={require('./images/selfie.jpg')} />
         <Text style={styles.cardtitle}> Dare Card #1 </Text>
         <Text style={styles.description}>
           Description: Lorem epsum is simply dummy text of the printing and
