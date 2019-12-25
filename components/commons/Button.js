@@ -3,16 +3,13 @@ import {Text, TouchableHighlight, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   touchable: {
-    //flex: 1,
-    //alignSelf: 'stretch',
-    // flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: '#3CDA88',
     padding: 10,
     borderRadius: 60,
     borderWidth: 3,
     borderColor: '#3CDA88',
-    marginTop: 40,
+    // marginTop: 10,
     width: 320,
   },
   buttonText: {

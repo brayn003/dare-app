@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     borderWidth: 3,
     borderColor: '#3CDA88',
-    marginTop: 40,
+    marginTop: 20,
     width: 320,
   },
   buttonText: {

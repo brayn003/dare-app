@@ -11,10 +11,13 @@ class Accepted extends React.Component {
       <View style={styles.container}>
         <Logo />
         <Image style={styles.image} source={require('./images/selfie.jpg')} />
-        <Text style={styles.cardtitle}> Dare Card #1 </Text>
+        <Text style={styles.pointtxt}>Point: 500</Text>
+        <Text style={styles.timertxt}>02d:23h:45m:36s</Text>
+        <Text style={styles.cardtitle}> Take a selfie </Text>
+        <Text style={styles.descriptiontitle}>Description :</Text>
         <Text style={styles.description}>
-          Description: Lorem epsum is simply dummy text of the printing and
-          typesetting industry. Lorem ipsum has been the industry.
+          Lorem epsum is simply dummy text of the printing and typesetting
+          industry. Lorem ipsum has been the industry.
         </Text>
         <View style={styles.buttonbox}>
           <Button> DARE ACCEPTED</Button>
@@ -37,14 +40,25 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   image: {
-    height: 200,
+    height: 250,
     width: 320,
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1,
-    marginTop: -160,
-    marginBottom: 160,
+    marginTop: 5,
     borderRadius: 30,
+    opacity: 0.8,
+  },
+  pointtxt: {
+    color: 'white',
+    marginTop: -50,
+    fontSize: 20,
+    opacity: 0.7,
+  },
+  timertxt: {
+    color: 'white',
+    marginTop: -5,
+    fontSize: 20,
+    opacity: 0.7,
   },
   cardtitle: {
     color: 'white',
@@ -52,32 +66,34 @@ const styles = StyleSheet.create({
     fontSize: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: -160,
-    marginBottom: 160,
+    marginTop: 15,
+  },
+  descriptiontitle: {
+    width: 300,
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 15,
+    textAlign: 'center',
+    // marginTop: 15,
   },
   description: {
     width: 300,
     color: 'white',
     fontWeight: 'bold',
     fontSize: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: -160,
-    marginBottom: 160,
-    padding: 10,
+    textAlign: 'center',
   },
   buttonbox: {
-    marginTop: -160,
-    marginBottom: -20,
     borderBottomEndRadius: 100,
     width: 320,
+    marginTop: 30,
   },
   footer: {
     color: '#3CDA88',
     fontSize: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 20,
+    marginBottom: 15,
   },
 });
 
