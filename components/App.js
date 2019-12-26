@@ -1,8 +1,17 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {View} from 'react-native';
+import Registration from './Registration';
+import LogIn from './logIn';
 
-const App = () => {
-  return <Text>Helllo Worls</Text>;
-};
+class App extends React.Component {
+  render() {
+    return (
+      <View>
+        <Registration />
+        {/* <LogIn /> */}
+      </View>
+    );
+  }
+}
 
 export default App;
