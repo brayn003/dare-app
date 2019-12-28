@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, ImageBackground, StyleSheet} from 'react-native';
+import {Text, View, Image, ImageBackground, StyleSheet} from 'react-native';
 
 class Card extends React.Component {
   render() {
@@ -22,8 +22,26 @@ class Card extends React.Component {
             industry. Lorem Ipsum has been the industry.
           </Text>
         </View>
-        <View style={styles.swipe} />
+        <View style={styles.swipe}>
+          <View>
+            <Image
+              source={require('./images/cancel-mark.png')}
+              style={styles.decline}
+            />
+          </View>
+          <View>
+            <Image
+              source={require('./images/check.png')}
+              style={styles.accept}
+            />
+          </View>
+        </View>
         <Text style={styles.similar}> Similar Dares: </Text>
+        <View style={styles.similardares}>
+          <View style={styles.similardaresimage} />
+          <View style={styles.similardaresimage} />
+          <View style={styles.similardaresimage} />
+        </View>
       </View>
     );
   }
@@ -43,10 +61,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'DK Appelstroop',
     fontSize: 30,
+    marginBottom: 15,
   },
   images: {
     height: 200,
     width: 350,
+    borderRadius: 50,
+    marginBottom: 30,
   },
   overlay: {
     height: 200,
@@ -71,20 +92,49 @@ const styles = StyleSheet.create({
   title: {
     color: 'white',
     fontSize: 22,
+    marginBottom: 15,
   },
   textcont: {
     width: 350,
-    height: 100,
+    height: 70,
   },
   swipe: {
     height: 50,
     width: 350,
     backgroundColor: '#3CDA88',
+    borderRadius: 50,
+    flexDirection: 'row',
+    alignContent: 'space-between',
+    marginBottom: 15,
+  },
+  decline: {
+    height: 50,
+    width: 50,
+    borderRadius: 50,
+  },
+  accept: {
+    height: 50,
+    width: 50,
+    borderRadius: 50,
   },
   similar: {
     color: 'white',
     fontSize: 18,
     textAlign: 'left',
+  },
+  similardares: {
+    height: 100,
+    width: 350,
+    flexDirection: 'row',
+    alignContent: 'space-between',
+    marginBottom: 10,
+  },
+  similardaresimage: {
+    height: 150,
+    width: 110,
+    marginLeft: 10,
+    backgroundColor: 'white',
+    borderRadius: 20,
   },
 });
 export default Card;
