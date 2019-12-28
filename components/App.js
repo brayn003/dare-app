@@ -1,15 +1,14 @@
 import React from 'react';
-import {View} from 'react-native';
-import Registration from './Registration';
-import LogIn from './logIn';
+import {NativeRouter} from 'react-router-native';
+
+import CoreLayout from './CoreLayout';
 
 class App extends React.Component {
   render() {
     return (
-      <View>
-        <Registration />
-        {/* <LogIn /> */}
-      </View>
+      <NativeRouter>
+        <CoreLayout />
+      </NativeRouter>
     );
   }
 }

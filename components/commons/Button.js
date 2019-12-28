@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     //alignSelf: 'stretch',
     // flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: '#3CDA88',
     padding: 10,
     borderRadius: 60,
     borderWidth: 3,
@@ -16,12 +15,12 @@ const styles = StyleSheet.create({
     width: 320,
   },
   buttonText: {
-    color: 'white',
+    color: '#3CDA88',
     padding: 4,
   },
 });
 
-const Button = ({children, style, ...rest}) => {
+const OutlineButton = ({children, style, ...rest}) => {
   return (
     <TouchableHighlight style={[styles.touchable, style]} {...rest}>
       <Text style={styles.buttonText}>{children}</Text>
@@ -29,4 +28,4 @@ const Button = ({children, style, ...rest}) => {
   );
 };
 
-export default Button;
+export default OutlineButton;
