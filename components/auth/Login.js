@@ -4,6 +4,8 @@ import {Text, View, TextInput, StyleSheet} from 'react-native';
 import Button from '../commons/Button';
 import axios from 'axios';
 import {setToken} from '../../helpers/auth';
+import {withRouter} from 'react-router-native';
+import {Link} from 'react-router-native';
 
 class Login extends React.Component {
   state = {
@@ -55,6 +57,11 @@ class Login extends React.Component {
 
           <Button onPress={this.onSubmit}>Log In</Button>
         </View>
+        <View>
+          <Link to="/register">
+            <Text style={styles.bottomTitle}>Don't have an Account?</Text>
+          </Link>
+        </View>
       </View>
     );
   }
@@ -73,6 +80,12 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: 'center',
     paddingBottom: 30,
+  },
+
+  bottomTitle: {
+    color: 'white',
+    fontSize: 20,
+    padding: 20,
   },
 
   textinput: {
