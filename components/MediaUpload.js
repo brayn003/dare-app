@@ -11,7 +11,8 @@ class MediaUpload extends React.Component {
   };
   render() {
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <View
+        style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Button title="Choose Photo" onPress={this.handleChoosePhoto} />
       </View>
     );
