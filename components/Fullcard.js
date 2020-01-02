@@ -1,7 +1,11 @@
 import React from 'react';
 import {Text, View, Image, ImageBackground, StyleSheet} from 'react-native';
 
+const dareId = '5e0dab7bb3aa574bf0f46438';
+
 class Card extends React.Component {
+  componentDidMount() {}
+
   render() {
     return (
       <View style={styles.container}>
@@ -61,13 +65,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'DK Appelstroop',
     fontSize: 30,
-    marginBottom: 15,
+    marginBottom: 10,
   },
   images: {
     height: 200,
     width: 350,
     borderRadius: 50,
-    marginBottom: 30,
+    marginBottom: 15,
   },
   overlay: {
     height: 200,
@@ -92,7 +96,7 @@ const styles = StyleSheet.create({
   title: {
     color: 'white',
     fontSize: 22,
-    marginBottom: 15,
+    marginBottom: 10,
   },
   textcont: {
     width: 350,
@@ -104,35 +108,36 @@ const styles = StyleSheet.create({
     backgroundColor: '#3CDA88',
     borderRadius: 50,
     flexDirection: 'row',
-    alignContent: 'space-between',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 15,
   },
   decline: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
     borderRadius: 50,
   },
   accept: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
     borderRadius: 50,
   },
   similar: {
     color: 'white',
     fontSize: 18,
     textAlign: 'left',
+    marginBottom: 10,
   },
   similardares: {
     height: 100,
     width: 350,
     flexDirection: 'row',
-    alignContent: 'space-between',
-    marginBottom: 10,
+    justifyContent: 'space-between',
+    marginBottom: 50,
   },
   similardaresimage: {
     height: 150,
     width: 110,
-    marginLeft: 10,
     backgroundColor: 'white',
     borderRadius: 20,
   },
