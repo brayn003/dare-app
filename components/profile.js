@@ -1,14 +1,7 @@
 import React, {Component} from 'react';
-import {
-  StyleSheet,
-  AppRegistry,
-  TouchableHighlight,
-  View,
-  Text,
-  Image,
-} from 'react-native';
+import {StyleSheet, View, Text, Image} from 'react-native';
 
-export default class ProfilePage extends Component {
+export default class Profile extends Component {
   render() {
     return (
       <View style={styles.background}>
@@ -20,7 +13,7 @@ export default class ProfilePage extends Component {
         />
         <Text style={styles.interests}> Outdoor | Sports | Fitness </Text>
 
-        <Text style={styles.interests}> Name : Dhairya </Text>
+        <Text style={styles.interests}> Name : Dhairy </Text>
 
         <Text style={styles.interests}> Dares Accepted : 100</Text>
         <Text style={styles.interests}> Dares Completed : 75 </Text>
@@ -30,11 +23,6 @@ export default class ProfilePage extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-  },
-
   background: {
     width: 500,
     height: 500,
@@ -43,28 +31,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'black',
   },
-
   title: {
     marginBottom: 50,
     color: '#3CDA88',
     fontWeight: 'bold',
     fontSize: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    // flexDirection: 'column',
   },
-
   profilepic: {
     height: 300,
     width: 300,
   },
-
   interests: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: '25',
+    margin: 25,
   },
 });

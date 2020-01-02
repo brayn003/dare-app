@@ -1,13 +1,14 @@
 import React from 'react';
 import {View} from 'react-native';
-import Success from './Success';
-import ProfilePage from './profile';
+import Profile from './Profile';
 
 class App extends React.Component {
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <ProfilePage />
+        <Profile />
+        {/* <Text> bj;wv; h;iuefah ;i</Text> */}
+        {/* <Success /> */}
       </View>
     );
   }
