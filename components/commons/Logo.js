@@ -6,12 +6,12 @@ const styles = StyleSheet.create({
   logoText: {
     color: '#3CDA88',
     fontWeight: 'bold',
-    fontSize: 36,
+    fontSize: 30,
     fontFamily: 'halvetica',
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    marginTop: 5,
+    marginTop: 10,
   },
 });
 
