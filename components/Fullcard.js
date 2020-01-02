@@ -11,7 +11,7 @@ class Card extends React.Component {
       <View style={styles.container}>
         <Text style={styles.heading}> DARE . INC </Text>
         <ImageBackground
-          source={require('./images/dare1.jpg')}
+          source={require('./Images/dare1.jpg')}
           style={styles.images}>
           <View style={styles.overlay}>
             <Text style={styles.imagetext}> Points:500 </Text>
@@ -29,13 +29,13 @@ class Card extends React.Component {
         <View style={styles.swipe}>
           <View>
             <Image
-              source={require('./images/cancel-mark.png')}
+              source={require('./Images/cancel-mark.png')}
               style={styles.decline}
             />
           </View>
           <View>
             <Image
-              source={require('./images/check.png')}
+              source={require('./Images/check.png')}
               style={styles.accept}
             />
           </View>
