@@ -3,23 +3,20 @@ import {Text, View, Image, ImageBackground, StyleSheet} from 'react-native';
 import axios from 'axios';
 import {getToken} from '../helpers/auth';
 
-const dareId = '5e0dab7bb3aa574bf0f46438';
+import {SERVER_URL} from '../constants.json';
 
 class Card extends React.Component {
   state = {
     dare: {},
   };
   componentDidMount = async () => {
-    console.log('hi');
+    const dareId = this.props.match.params.id;
     const token = await getToken();
-    const res = await axios.get(
-      'http://192.168.0.51:3053/api/v1/app/dare/' + dareId,
-      {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
+    const res = await axios.get(`${SERVER_URL}/api/v1/app/dare/` + dareId, {
+      headers: {
+        Authorization: `Token ${token}`,
       },
-    );
+    });
     this.setState({dare: res.data});
   };
 

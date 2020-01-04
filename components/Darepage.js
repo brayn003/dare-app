@@ -10,13 +10,36 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-class Darepage extends Component {  
-  componentDidMount = async () => {
-    
-  }
+import axios from 'axios';
+import {SERVER_URL} from '../constants.json';
+import {getToken} from '../helpers/auth.js';
 
+class Darepage extends Component {
+  state = {
+    dares: [],
+  };
+
+  componentDidMount = async () => {
+    const token = await getToken();
+    try {
+      const res = await axios.get(`${SERVER_URL}/api/v1/app/dares`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      this.setState({dares: res.data});
+    } catch (err) {
+      console.log(err.response);
+    }
+  };
+
+  onPressCard = dareId => {
+    const {history} = this.props;
+    history.push(`/dare/${dareId}`);
+  };
 
   render() {
+    const {dares} = this.state;
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
@@ -33,46 +56,33 @@ class Darepage extends Component {
               </View>
             </View>
             <View style={styles.cardcon}>
-              <ImageBackground
-                source={require('./Images/Burger.jpg')}
-                style={styles.images}>
-                <View style={styles.overlay}>
-                  <TouchableOpacity onPress={this._onPressButton} />
-                  <View style={styles.textcontainer}>
-                    <Text style={styles.imagetext}>Eat a Burger.</Text>
-                    <Text style={styles.imgtext}>Uploaded 1hr ago</Text>
-                    <Text style={styles.imgtext}>Points:200</Text>
-                  </View>
-                </View>
-              </ImageBackground>
-              <ImageBackground
-                source={require('./Images/Scott.jpg')}
-                style={styles.images}>
-                <View style={styles.overlay}>
-                  <TouchableOpacity onPress={this._onPressButton} />
-                  <View style={styles.textcontainer}>
-                    <Text style={styles.imagetext}>
-                      Paticipate in a Downhill race.
-                    </Text>
-                    <Text style={styles.imgtext}>Uploaded 2hrs ago</Text>
-                    <Text style={styles.imgtext}>Points:200</Text>
-                  </View>
-                </View>
-              </ImageBackground>
-              <ImageBackground
-                source={require('./Images/doggo.jpg')}
-                style={styles.images}>
-                <View style={styles.overlay}>
-                  <TouchableOpacity onPress={this._onPressButton} />
-                  <View style={styles.textcontainer}>
-                    <Text style={styles.imagetext}>
-                      Take a selfie with a street dog.
-                    </Text>
-                    <Text style={styles.imgtext}>Uploaded 3hrs ago</Text>
-                    <Text style={styles.imgtext}>Points:200</Text>
-                  </View>
-                </View>
-              </ImageBackground>
+              {dares.map(dare => {
+                return (
+                  <TouchableOpacity
+                    key={dare.id}
+                    onPress={() => {
+                      this.onPressCard(dare.id);
+                    }}>
+                    <ImageBackground
+                      source={{uri: dare.image}}
+                      style={styles.images}>
+                      <View style={styles.overlay}>
+                        <View style={styles.textcontainer}>
+                          <Text style={styles.imagetext}>
+                            {dare.title || 'Dare Title'}
+                          </Text>
+                          <Text style={styles.imgtext}>
+                            Expires in {dare.time} day{dare.time > 1 && 's'}
+                          </Text>
+                          <Text style={styles.imgtext}>
+                            Points: {dare.points}
+                          </Text>
+                        </View>
+                      </View>
+                    </ImageBackground>
+                  </TouchableOpacity>
+                );
+              })}
             </View>
           </View>
         </ScrollView>
