@@ -13,7 +13,7 @@ class Card extends React.Component {
     console.log('hi');
     const token = await getToken();
     const res = await axios.get(
-      'http://192.168.0.51:3053/api/v1/app/dare/' + dareId,
+      'http://dare-api.iide.in/api/v1/app/dare/' + dareId,
       {
         headers: {
           Authorization: `Token ${token}`,
