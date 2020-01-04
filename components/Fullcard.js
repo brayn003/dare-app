@@ -1,41 +1,56 @@
 import React from 'react';
 import {Text, View, Image, ImageBackground, StyleSheet} from 'react-native';
+import axios from 'axios';
+import {getToken} from '../helpers/auth';
 
 const dareId = '5e0dab7bb3aa574bf0f46438';
 
 class Card extends React.Component {
-  componentDidMount() {}
+  state = {
+    dare: {},
+  };
+  componentDidMount = async () => {
+    console.log('hi');
+    const token = await getToken();
+    const res = await axios.get(
+      'http://192.168.0.51:3053/api/v1/app/dare/' + dareId,
+      {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      },
+    );
+    this.setState({dare: res.data});
+  };
 
   render() {
+    const {dare} = this.state;
+    console.log(dare);
     return (
       <View style={styles.container}>
         <Text style={styles.heading}> DARE . INC </Text>
-        <ImageBackground
-          source={require('./Images/dare1.jpg')}
-          style={styles.images}>
+        <ImageBackground source={{uri: dare.image}} style={styles.images}>
           <View style={styles.overlay}>
-            <Text style={styles.imagetext}> Points:500 </Text>
-            <Text style={styles.imagetime}> 02d:23h:45m:36s </Text>
+            <Text style={styles.imagetext}> {dare.points} </Text>
+            <Text style={styles.imagetime}> {dare.time} </Text>
           </View>
         </ImageBackground>
-        <Text style={styles.title}> Dare Card #1</Text>
+        <Text style={styles.title}> {dare.title || 'Dare Title0'}</Text>
         <Text style={styles.imagetext}> Instructions: </Text>
         <View style={styles.textcont}>
-          <Text style={styles.imagetime}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry.
-          </Text>
+          <Text style={styles.imagetime}>{dare.description}</Text>
         </View>
         <View style={styles.swipe}>
           <View>
             <Image
-              source={require('./Images/cancel-mark.png')}
+              source={require('./Images/reject.png')}
               style={styles.decline}
             />
           </View>
+
           <View>
             <Image
-              source={require('./Images/check.png')}
+              source={require('./Images/accept.png')}
               style={styles.accept}
             />
           </View>
@@ -53,12 +68,10 @@ class Card extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    width: 500,
-    height: 500,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black',
+    backgroundColor: '#000000',
   },
   heading: {
     color: '#3CDA88',
