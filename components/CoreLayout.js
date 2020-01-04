@@ -31,7 +31,7 @@ class CoreLayout extends Component {
     const {isLoggedIn} = this.state;
     console.log(this.props);
     return (
-      <View>
+      <View style={{backgroundColor: 'black', flex: 1}}>
         <Switch>
           <Route exact path="/" component={FullCard} />
           <Route exact path="/login" component={Login} />

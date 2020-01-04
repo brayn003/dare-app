@@ -7,6 +7,8 @@ import {setToken} from '../../helpers/auth';
 import {withRouter} from 'react-router-native';
 import {Link} from 'react-router-native';
 
+import {SERVER_URL} from '../../constants.json';
+
 class Login extends React.Component {
   state = {
     username: '',
@@ -14,12 +16,13 @@ class Login extends React.Component {
   };
 
   onSubmit = async () => {
+    console.log(SERVER_URL);
     try {
       const {username, password} = this.state;
       const {history} = this.props;
       if (username && password) {
         const res = await axios.post(
-          'http://10.0.2.2:3053/api/v1/auth/login/',
+          `${SERVER_URL}/api/v1/auth/login/`,
           this.state,
         );
         await setToken(res.data.token);
