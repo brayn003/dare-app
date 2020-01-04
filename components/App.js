@@ -1,6 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import Success from './Success';
+// import Bottom from './bottomTab';
 
 class App extends React.Component {
   render() {
