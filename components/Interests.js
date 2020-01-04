@@ -9,9 +9,45 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
+import axios from 'axios';
+import {SERVER_URL} from '../constants.json';
+import {getToken} from '../helpers/auth.js';
 
 class Interests extends React.Component {
+  state = {
+    interests: [],
+    selected: [],
+  };
+
+  componentDidMount = async () => {
+    const token = await getToken();
+    try {
+      const res = await axios.get(`${SERVER_URL}/api/v1/app/interests`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      this.setState({interests: res.data});
+    } catch (err) {
+      console.log('err', err.response);
+    }
+  };
+
+  onPressCard = interestId => {
+    console.log('hey there', interestId);
+    const {selected} = this.state;
+    let selected2 = [...selected];
+    const index = selected.indexOf(interestId);
+    if (index === -1) {
+      selected2.push(interestId);
+    } else {
+      selected2.splice(index, 1);
+    }
+    this.setState({selected: selected2});
+  };
+
   render() {
+    const {interests, selected} = this.state;
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>
@@ -29,65 +65,30 @@ class Interests extends React.Component {
                   />
                 </View>
               </View>
-
-              <ImageBackground
-                source={require('./Images/books.jpg')}
-                style={styles.images}>
-                <View style={styles.overlay}>
-                  <TouchableOpacity onPress={this._onPressButton}>
-                    <Image
-                      style={styles.tick}
-                      source={require('./Images/tick2.png')}
-                    />
+              {interests.map(interest => {
+                return (
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.onPressCard(interest.id);
+                    }}>
+                    <ImageBackground
+                      key={interest.id}
+                      source={{uri: interest.imageURL}}
+                      style={styles.images}>
+                      <View style={styles.overlay}>
+                        {selected.indexOf(interest.id) !== -1 && (
+                          <Image
+                            style={styles.tick}
+                            source={require('./Images/tick2.png')}
+                          />
+                        )}
+                        <Text style={styles.imagetext}> {interest.title} </Text>
+                        {/* <Text style={styles.imgtext}> 200 interested</Text> */}
+                      </View>
+                    </ImageBackground>
                   </TouchableOpacity>
-                  <Image style={require('./Images/tick.png')} />
-                  <Text style={styles.imagetext}> READ </Text>
-                  <Text style={styles.imgtext}> 200 interested</Text>
-                </View>
-              </ImageBackground>
-              <ImageBackground
-                source={require('./Images/fitness.jpg')}
-                style={styles.images}>
-                <View style={styles.overlay}>
-                  <TouchableOpacity onPress={this._onPressButton}>
-                    <Image
-                      style={styles.tick}
-                      source={require('./Images/tick2.png')}
-                    />
-                  </TouchableOpacity>
-                  <Text style={styles.imagetext}> FITNESS </Text>
-                  <Text style={styles.imgtext}> 268 interested</Text>
-                </View>
-              </ImageBackground>
-              <ImageBackground
-                source={require('./Images/outdoor.jpg')}
-                style={styles.images}>
-                <View style={styles.overlay}>
-                  <TouchableOpacity onPress={this._onPressButton}>
-                    <Image
-                      style={styles.tick}
-                      source={require('./Images/tick2.png')}
-                    />
-                  </TouchableOpacity>
-                  <Text style={styles.imagetext}> OUTDOOR </Text>
-                  <Text style={styles.imgtext}> 268 interested</Text>
-                </View>
-              </ImageBackground>
-              <ImageBackground
-                source={require('./Images/art.jpg')}
-                style={styles.images}>
-                <View style={styles.overlay}>
-                  <TouchableOpacity onPress={this._onPressButton}>
-                    <Image
-                      style={styles.tick}
-                      source={require('./Images/tick2.png')}
-                    />
-                  </TouchableOpacity>
-                  <Image style={require('./Images/tick.png')} />
-                  <Text style={styles.imagetext}> READ </Text>
-                  <Text style={styles.imgtext}> 200 interested</Text>
-                </View>
-              </ImageBackground>
+                );
+              })}
             </View>
           </View>
         </ScrollView>
@@ -152,17 +153,20 @@ const styles = StyleSheet.create({
   imagetext: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 22,
     textAlign: 'left',
+    marginBottom: 16,
   },
   imgtext: {
     color: 'white',
     justifyContent: 'center',
+    paddingBottom: 16,
   },
   tick: {
     height: 50,
     width: 50,
     justifyContent: 'center',
+    marginBottom: 20,
   },
 });
 export default Interests;

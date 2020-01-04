@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Route, Switch, withRouter} from 'react-router-native';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 
 import Login from './auth/Login';
 import Registration from './auth/Registration';
