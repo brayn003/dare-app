@@ -1,37 +1,56 @@
 import React from 'react';
 import {Text, View, Image, ImageBackground, StyleSheet} from 'react-native';
+import axios from 'axios';
+import {getToken} from '../helpers/auth';
+
+const dareId = '5e0dab7bb3aa574bf0f46438';
 
 class Card extends React.Component {
+  state = {
+    dare: {},
+  };
+  componentDidMount = async () => {
+    console.log('hi');
+    const token = await getToken();
+    const res = await axios.get(
+      'http://192.168.0.51:3053/api/v1/app/dare/' + dareId,
+      {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      },
+    );
+    this.setState({dare: res.data});
+  };
+
   render() {
+    const {dare} = this.state;
+    console.log(dare);
     return (
       <View style={styles.container}>
         <Text style={styles.heading}> DARE . INC </Text>
-        <ImageBackground
-          source={require('./Images/dare1.jpg')}
-          style={styles.images}>
+        <ImageBackground source={{uri: dare.image}} style={styles.images}>
           <View style={styles.overlay}>
-            <Text style={styles.imagetext}> Points:500 </Text>
-            <Text style={styles.imagetime}> 02d:23h:45m:36s </Text>
+            <Text style={styles.imagetext}> {dare.points} </Text>
+            <Text style={styles.imagetime}> {dare.time} </Text>
           </View>
         </ImageBackground>
-        <Text style={styles.title}> Dare Card #1</Text>
+        <Text style={styles.title}> {dare.title || 'Dare Title0'}</Text>
         <Text style={styles.imagetext}> Instructions: </Text>
         <View style={styles.textcont}>
-          <Text style={styles.imagetime}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry.
-          </Text>
+          <Text style={styles.imagetime}>{dare.description}</Text>
         </View>
         <View style={styles.swipe}>
           <View>
             <Image
-              source={require('./Images/cancel-mark.png')}
+              source={require('./Images/reject.png')}
               style={styles.decline}
             />
           </View>
+
           <View>
             <Image
-              source={require('./Images/check.png')}
+              source={require('./Images/accept.png')}
               style={styles.accept}
             />
           </View>
@@ -49,25 +68,23 @@ class Card extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    width: 500,
-    height: 500,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black',
+    backgroundColor: '#000000',
   },
   heading: {
     color: '#3CDA88',
     fontWeight: 'bold',
     fontFamily: 'DK Appelstroop',
     fontSize: 30,
-    marginBottom: 15,
+    marginBottom: 10,
   },
   images: {
     height: 200,
     width: 350,
     borderRadius: 50,
-    marginBottom: 30,
+    marginBottom: 15,
   },
   overlay: {
     height: 200,
@@ -92,7 +109,7 @@ const styles = StyleSheet.create({
   title: {
     color: 'white',
     fontSize: 22,
-    marginBottom: 15,
+    marginBottom: 10,
   },
   textcont: {
     width: 350,
@@ -104,35 +121,36 @@ const styles = StyleSheet.create({
     backgroundColor: '#3CDA88',
     borderRadius: 50,
     flexDirection: 'row',
-    alignContent: 'space-between',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 15,
   },
   decline: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
     borderRadius: 50,
   },
   accept: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
     borderRadius: 50,
   },
   similar: {
     color: 'white',
     fontSize: 18,
     textAlign: 'left',
+    marginBottom: 10,
   },
   similardares: {
     height: 100,
     width: 350,
     flexDirection: 'row',
-    alignContent: 'space-between',
-    marginBottom: 10,
+    justifyContent: 'space-between',
+    marginBottom: 50,
   },
   similardaresimage: {
     height: 150,
     width: 110,
-    marginLeft: 10,
     backgroundColor: 'white',
     borderRadius: 20,
   },
