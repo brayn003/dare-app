@@ -79,7 +79,7 @@ class Interests extends React.Component {
                         {selected.indexOf(interest.id) !== -1 && (
                           <Image
                             style={styles.tick}
-                            source={require('./Images/tick2.png')}
+                            source={require('./Images/tick.png')}
                           />
                         )}
                         <Text style={styles.imagetext}> {interest.title} </Text>
