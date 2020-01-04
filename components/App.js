@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import {View} from 'react-native';
 import Accepted from './Accepted';
 import Success from './Success';
@@ -12,6 +13,18 @@ class App extends React.Component {
         <Success />
         <MediaUpload />
       </View>
+=======
+import {NativeRouter} from 'react-router-native';
+
+import CoreLayout from './CoreLayout';
+
+class App extends React.Component {
+  render() {
+    return (
+      <NativeRouter>
+        <CoreLayout />
+      </NativeRouter>
+>>>>>>> 90d8f1853caacd839b09749cda52b485aa6bdb0d
     );
   }
 }
