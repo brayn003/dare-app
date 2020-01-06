@@ -8,11 +8,11 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     borderWidth: 3,
     borderColor: '#3CDA88',
-    // marginTop: 10,
     width: 320,
+    backgroundColor: '#3CDA88',
   },
   buttonText: {
-    color: '#3CDA88',
+    color: '#FEFEFE',
     padding: 4,
   },
 });

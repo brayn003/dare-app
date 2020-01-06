@@ -69,8 +69,6 @@ const styles = StyleSheet.create({
 
   buttonbox: {
     marginTop: 50,
-    borderBottomEndRadius: 100,
-    width: 320,
   },
   card: {
     marginTop: 5,
