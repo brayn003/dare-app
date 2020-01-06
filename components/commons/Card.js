@@ -66,7 +66,7 @@ const Card = ({children, style, ...rest}) => {
       <Text style={styles.description}>
         {children}
         Lorem epsum is simply dummy text of the printing and typesetting
-        industry. Lorem ipsum has been the industry..
+        industry. Lorem ipsum has been the industry.
       </Text>
     </View>
   );
