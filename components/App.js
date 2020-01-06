@@ -1,14 +1,14 @@
 import React from 'react';
-import {View} from 'react-native';
-import Success from './Success';
-// import Bottom from './bottomTab';
+import {NativeRouter} from 'react-router-native';
+
+import CoreLayout from './CoreLayout';
 
 class App extends React.Component {
   render() {
     return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Success />
-      </View>
+      <NativeRouter>
+        <CoreLayout />
+      </NativeRouter>
     );
   }
 }
