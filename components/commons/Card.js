@@ -55,19 +55,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const Card = ({children, style, ...rest}) => {
+const Card = ({children, dare, style, ...rest}) => {
   return (
     <View style={[styles.cardbox, style]} {...rest}>
-      <Image style={styles.image} source={require('../images/selfie.jpg')} />
-      <Text style={styles.pointtxt}>{children}Point: 500</Text>
-      <Text style={styles.timertxt}>{children} 02d:20h:45m:36s</Text>
-      <Text style={styles.cardtitle}>{children} Take a selfie </Text>
-      <Text style={styles.descriptiontitle}>{children} Description : </Text>
-      <Text style={styles.description}>
-        {children}
-        Lorem epsum is simply dummy text of the printing and typesetting
-        industry. Lorem ipsum has been the industry.
-      </Text>
+      <Image style={styles.image} source={{uri: dare.image}} />
+      <Text style={styles.pointtxt}>Point: {dare.points}</Text>
+      <Text style={styles.timertxt}>{dare.time} days left</Text>
+      <Text style={styles.cardtitle}>{dare.title} </Text>
+      <Text style={styles.descriptiontitle}>Description : </Text>
+      <Text style={styles.description}>{dare.description}</Text>
     </View>
   );
 };

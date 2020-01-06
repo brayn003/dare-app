@@ -50,7 +50,7 @@ class Darepage extends Component {
               </View>
               <View style={styles.profilepic}>
                 <Image
-                  source={require('./Images/Cat.jpg')}
+                  source={require('./images/Cat.jpg')}
                   style={styles.img}
                 />
               </View>
