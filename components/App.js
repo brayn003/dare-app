@@ -1,12 +1,15 @@
 import React from 'react';
-import Accepted from './Accepted';
-// import Afteraccepted from './Afteraccepted';
-// import Registration from './Registration';
-// import Interest from './Interest';
+import {NativeRouter} from 'react-router-native';
+
+import CoreLayout from './CoreLayout';
 
 class App extends React.Component {
   render() {
-    return <Accepted />;
+    return (
+      <NativeRouter>
+        <CoreLayout />
+      </NativeRouter>
+    );
   }
 }
 
