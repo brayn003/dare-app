@@ -24,35 +24,35 @@ class Interests extends React.Component {
                 </View>
                 <View>
                   <Image
-                    source={require('./Images/profile.jpg')}
+                    source={require('./images/profile.jpg')}
                     style={styles.img}
                   />
                 </View>
               </View>
 
               <ImageBackground
-                source={require('./Images/books.jpg')}
+                source={require('./images/books.jpg')}
                 style={styles.images}>
                 <View style={styles.overlay}>
                   <TouchableOpacity onPress={this._onPressButton}>
                     <Image
                       style={styles.tick}
-                      source={require('./Images/tick2.png')}
+                      source={require('./images/tick2.png')}
                     />
                   </TouchableOpacity>
-                  <Image style={require('./Images/tick.png')} />
+                  <Image style={require('./images/tick.png')} />
                   <Text style={styles.imagetext}> READ </Text>
                   <Text style={styles.imgtext}> 200 interested</Text>
                 </View>
               </ImageBackground>
               <ImageBackground
-                source={require('./Images/fitness.jpg')}
+                source={require('./images/fitness.jpg')}
                 style={styles.images}>
                 <View style={styles.overlay}>
                   <TouchableOpacity onPress={this._onPressButton}>
                     <Image
                       style={styles.tick}
-                      source={require('./Images/tick2.png')}
+                      source={require('./images/tick2.png')}
                     />
                   </TouchableOpacity>
                   <Text style={styles.imagetext}> FITNESS </Text>
@@ -60,13 +60,13 @@ class Interests extends React.Component {
                 </View>
               </ImageBackground>
               <ImageBackground
-                source={require('./Images/outdoor.jpg')}
+                source={require('./images/outdoor.jpg')}
                 style={styles.images}>
                 <View style={styles.overlay}>
                   <TouchableOpacity onPress={this._onPressButton}>
                     <Image
                       style={styles.tick}
-                      source={require('./Images/tick2.png')}
+                      source={require('./images/tick2.png')}
                     />
                   </TouchableOpacity>
                   <Text style={styles.imagetext}> OUTDOOR </Text>
@@ -74,16 +74,16 @@ class Interests extends React.Component {
                 </View>
               </ImageBackground>
               <ImageBackground
-                source={require('./Images/art.jpg')}
+                source={require('./images/art.jpg')}
                 style={styles.images}>
                 <View style={styles.overlay}>
                   <TouchableOpacity onPress={this._onPressButton}>
                     <Image
                       style={styles.tick}
-                      source={require('./Images/tick2.png')}
+                      source={require('./images/tick2.png')}
                     />
                   </TouchableOpacity>
-                  <Image style={require('./Images/tick.png')} />
+                  <Image style={require('./images/tick.png')} />
                   <Text style={styles.imagetext}> READ </Text>
                   <Text style={styles.imgtext}> 200 interested</Text>
                 </View>

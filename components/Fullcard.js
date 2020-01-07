@@ -43,14 +43,14 @@ class Card extends React.Component {
         <View style={styles.swipe}>
           <View>
             <Image
-              source={require('./Images/reject.png')}
+              source={require('./images/reject.png')}
               style={styles.decline}
             />
           </View>
 
           <View>
             <Image
-              source={require('./Images/accept.png')}
+              source={require('./images/accept.png')}
               style={styles.accept}
             />
           </View>
