@@ -1,6 +1,7 @@
 import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import {Text} from 'react-native';
 import {View, StyleSheet} from 'react-native';
+import {Link} from 'react-router-native';
 // import styles from '../styles';
 
 const style = StyleSheet.create({
@@ -46,15 +47,15 @@ class Bottom extends React.Component {
   render() {
     return (
       <View style={style.bottomTitle}>
-        <TouchableOpacity>
+        <Link to="/">
           <Text style={style.bottomName}>HOME</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </Link>
+        <Link to="/">
           <Text style={style.bottomDare}>DARE</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </Link>
+        <Link to="/profile">
           <Text style={style.bottomName}>PROFILE</Text>
-        </TouchableOpacity>
+        </Link>
       </View>
     );
   }

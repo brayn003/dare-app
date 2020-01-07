@@ -1,6 +1,6 @@
 import React from 'react';
-import {Text} from 'react-native';
-import {View, Image, TouchableHighlight, StyleSheet} from 'react-native';
+import {Text, View, Image, TouchableHighlight, StyleSheet} from 'react-native';
+// import {Link} from 'react-router-native';
 
 import styles from '../styles';
 import Bottom from './bottomTab';
@@ -36,6 +36,15 @@ const internalStyle = StyleSheet.create({
 });
 
 class Success extends React.Component {
+  componentDidMount() {
+    console.log('hit up', this.props.match.params.completedId);
+  }
+
+  onPressToDares = () => {
+    const {history} = this.props;
+    history.push('/');
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -54,7 +63,7 @@ class Success extends React.Component {
           {' '}
           * it takes upto 24 hours for approval
         </Text>
-        <TouchableHighlight style={styles.button}>
+        <TouchableHighlight onPress={this.onPressToDares} style={styles.button}>
           <Text style={styles.btnStyle}>Take other dares</Text>
         </TouchableHighlight>
         <View>
