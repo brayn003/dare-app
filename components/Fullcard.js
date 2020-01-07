@@ -1,26 +1,58 @@
 import React from 'react';
-import {Text, View, Image, ImageBackground, StyleSheet} from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  ImageBackground,
+  StyleSheet,
+  TouchableHighlight,
+} from 'react-native';
 import axios from 'axios';
 import {getToken} from '../helpers/auth';
 
-const dareId = '5e0dab7bb3aa574bf0f46438';
+import {SERVER_URL} from '../constants.json';
 
 class Card extends React.Component {
   state = {
     dare: {},
   };
   componentDidMount = async () => {
-    console.log('hi');
+    const dareId = this.props.match.params.id;
     const token = await getToken();
-    const res = await axios.get(
-      'http://192.168.0.51:3053/api/v1/app/dare/' + dareId,
-      {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
+    const res = await axios.get(`${SERVER_URL}/api/v1/app/dare/` + dareId, {
+      headers: {
+        Authorization: `Token ${token}`,
       },
-    );
+    });
     this.setState({dare: res.data});
+  };
+
+  onClickAccept = async () => {
+    const dareId = this.props.match.params.id;
+    const {history} = this.props;
+    const token = await getToken();
+    console.log(token);
+    try {
+      const res = await axios.post(
+        `${SERVER_URL}/api/v1/app/dare/${dareId}/accept`,
+        {},
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        },
+      );
+      if (res.data) {
+        history.push(`/accepted/${dareId}`);
+      }
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  };
+
+  onClickReject = () => {
+    const {history} = this.props;
+    history.push('/');
   };
 
   render() {
@@ -41,19 +73,23 @@ class Card extends React.Component {
           <Text style={styles.imagetime}>{dare.description}</Text>
         </View>
         <View style={styles.swipe}>
-          <View>
-            <Image
-              source={require('./images/reject.png')}
-              style={styles.decline}
-            />
-          </View>
+          <TouchableHighlight onPress={this.onClickReject}>
+            <View>
+              <Image
+                source={require('./images/reject.png')}
+                style={styles.decline}
+              />
+            </View>
+          </TouchableHighlight>
 
-          <View>
-            <Image
-              source={require('./images/accept.png')}
-              style={styles.accept}
-            />
-          </View>
+          <TouchableHighlight onPress={this.onClickAccept}>
+            <View>
+              <Image
+                source={require('./images/accept.png')}
+                style={styles.accept}
+              />
+            </View>
+          </TouchableHighlight>
         </View>
         <Text style={styles.similar}> Similar Dares: </Text>
         <View style={styles.similardares}>

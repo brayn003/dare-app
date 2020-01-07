@@ -39,51 +39,52 @@ class Registration extends React.Component {
   render() {
     const {username, mobile, email, password} = this.state;
     return (
-      <View style={styles.container}>
-        <View>
-          <Text style={styles.title}> Welcome to Dare.Inc</Text>
+      // <View style={styles.container}>
+      //   <View>
+      //     <Text style={styles.title}> Welcome to Dare.Inc</Text>
 
-          <TextInput
-            onChangeText={text => {
-              this.setState({username: text});
-            }}
-            value={username}
-            style={styles.textinput}
-            placeholder="Your Username"
-          />
+      //     <TextInput
+      //       onChangeText={text => {
+      //         this.setState({username: text});
+      //       }}
+      //       value={username}
+      //       style={styles.textinput}
+      //       placeholder="Your Username"
+      //     />
 
-          <TextInput
-            onChangeText={text => {
-              this.setState({mobile: text});
-            }}
-            value={mobile}
-            style={styles.textinput}
-            placeholder="Your Mobile"
-          />
+      //     <TextInput
+      //       onChangeText={text => {
+      //         this.setState({mobile: text});
+      //       }}
+      //       value={mobile}
+      //       style={styles.textinput}
+      //       placeholder="Your Mobile"
+      //     />
 
-          <TextInput
-            onChangeText={text => {
-              this.setState({email: text});
-            }}
-            value={email}
-            style={styles.textinput}
-            placeholder="Your Email"
-          />
+      //     <TextInput
+      //       onChangeText={text => {
+      //         this.setState({email: text});
+      //       }}
+      //       value={email}
+      //       style={styles.textinput}
+      //       placeholder="Your Email"
+      //     />
 
-          <TextInput
-            onChangeText={text => {
-              this.setState({password: text});
-            }}
-            value={password}
-            style={styles.textinput}
-            placeholder="Your Password"
-          />
+      //     <TextInput
+      //       onChangeText={text => {
+      //         this.setState({password: text});
+      //       }}
+      //       value={password}
+      //       style={styles.textinput}
+      //       placeholder="Your Password"
+      //     />
 
-          <TouchableOpacity onPress={this.onSubmit} style={styles.signupbutton}>
-            <Text style={styles.btntext}>Sign Up </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      //     <TouchableOpacity onPress={this.onSubmit} style={styles.signupbutton}>
+      //       <Text style={styles.btntext}>Sign Up </Text>
+      //     </TouchableOpacity>
+      //   </View>
+      // </View>
+      <Text>hhh</Text>
     );
   }
 }

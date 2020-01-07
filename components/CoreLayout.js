@@ -8,6 +8,8 @@ import FullCard from './Fullcard';
 import Interests from './Interests';
 
 import {getToken} from '../helpers/auth';
+import Darepage from './Darepage';
+import Accepted from './Accepted';
 
 class CoreLayout extends Component {
   state = {
@@ -34,9 +36,12 @@ class CoreLayout extends Component {
     return (
       <View style={{backgroundColor: 'black', flex: 1}}>
         <Switch>
-          <Route exact path="/" component={Interests} />
+          <Route exact path="/" component={Darepage} />
+          <Route exact path="/dare/:id" component={FullCard} />
+          <Route exact path="/intrests" component={Interests} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Registration} />
+          <Route exact path="/accepted/:id" component={Accepted} />
         </Switch>
       </View>
     );
