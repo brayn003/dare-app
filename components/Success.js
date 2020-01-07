@@ -1,6 +1,10 @@
 import React from 'react';
 import {Text, View, Image, TouchableHighlight, StyleSheet} from 'react-native';
 // import {Link} from 'react-router-native';
+import axios from 'axios';
+
+import {getToken} from '../helpers/auth';
+import {SERVER_URL} from '../constants.json';
 
 import styles from '../styles';
 import Bottom from './bottomTab';
@@ -36,9 +40,23 @@ const internalStyle = StyleSheet.create({
 });
 
 class Success extends React.Component {
-  componentDidMount() {
-    console.log('hit up', this.props.match.params.completedId);
-  }
+  state = {
+    complete: {},
+  };
+
+  componentDidMount = async () => {
+    const token = await getToken();
+    const completeId = this.props.match.params.completeId;
+    const res = await axios.get(
+      `${SERVER_URL}/api/v1/app/dare-completed/${completeId}`,
+      {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      },
+    );
+    this.setState({complete: res.data});
+  };
 
   onPressToDares = () => {
     const {history} = this.props;
@@ -46,12 +64,13 @@ class Success extends React.Component {
   };
 
   render() {
+    const {complete} = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.title}>DARE . INC</Text>
-        <Image style={styles.image} source={require('./images/football.jpg')} />
+        <Image style={styles.image} source={{uri: complete.imageUrl}} />
         <Text style={internalStyle.successMessage}>
-          Video successfully uploaded
+          Picture successfully uploaded
         </Text>
         <Text style={internalStyle.successDescription}>
           {'Points will be added to your'}

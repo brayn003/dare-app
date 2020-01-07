@@ -68,8 +68,26 @@ export default class MediaUploads extends Component {
   };
 
   completeDare = async () => {
+    const token = await getToken();
+    const dareId = this.props.match.params.id;
+    const completeId = this.props.match.params.completeId;
+    const {history} = this.props;
     const url = await this.uploadImage();
-    const res = await axios.post('');
+    console.log(dareId, completeId);
+    const res = await axios.post(
+      `${SERVER_URL}/api/v1/app/dare/${dareId}/complete/${completeId}`,
+      {
+        imageUrl: url,
+        completed: true,
+      },
+      {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      },
+    );
+    console.log(res);
+    history.push(`/completed/${completeId}`);
   };
 
   resetHandler = () => {

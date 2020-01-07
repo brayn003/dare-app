@@ -32,9 +32,10 @@ class Accepted extends React.Component {
   };
 
   onPressComplete = () => {
-    const completedId = this.props.match.params.completedId;
+    const dareId = this.props.match.params.id;
+    const completeId = this.props.match.params.completeId;
     const {history} = this.props;
-    history.push(`/upload/${completedId}`);
+    history.push(`/upload/${dareId}/${completeId}`);
   };
 
   render() {
