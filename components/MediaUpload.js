@@ -1,7 +1,14 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
+
+import axios from 'axios';
+
 import OutlineButton from './commons/Button';
+import {getToken} from '../helpers/auth';
+import {SERVER_URL} from '../constants.json';
+
+import {Buffer} from 'buffer';
 
 export default class MediaUploads extends Component {
   state = {
@@ -28,6 +35,8 @@ export default class MediaUploads extends Component {
         } else if (res.error) {
           console.log('Error', res.error);
         } else {
+          console.log(Object.keys(res));
+          this.imageDetails = res;
           this.setState({
             pickedImage: {uri: res.uri},
           });
@@ -36,11 +45,39 @@ export default class MediaUploads extends Component {
     );
   };
 
+  uploadImage = async () => {
+    const token = await getToken();
+    try {
+      const res = await axios.get(
+        `${SERVER_URL}/api/v1/app/upload/signed-url`,
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        },
+      );
+      const uploadUrl = res.data.signedUrl;
+      const readUrl = res.data.url;
+      const config = {headers: {'Content-Type': this.imageDetails.type}};
+      const bf = new Buffer(this.imageDetails.data, 'base64');
+      await axios.put(uploadUrl, bf, config);
+      return readUrl;
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  };
+
+  completeDare = async () => {
+    const url = await this.uploadImage();
+    const res = await axios.post('');
+  };
+
   resetHandler = () => {
     this.reset();
   };
 
   render() {
+    const {pickedImage} = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.textStyle}>
@@ -50,8 +87,9 @@ export default class MediaUploads extends Component {
           <Image source={this.state.pickedImage} style={styles.previewImage} />
         </View>
         <View style={styles.button}>
-          <OutlineButton onPress={this.pickImageHandler}>
-            Pick Image
+          <OutlineButton
+            onPress={pickedImage ? this.completeDare : this.pickImageHandler}>
+            {pickedImage ? 'Upload Image and complete dare' : 'Pick Image'}
           </OutlineButton>
 
           <OutlineButton onPress={this.resetHandler}>Reset</OutlineButton>
