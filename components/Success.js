@@ -1,76 +1,77 @@
 import React from 'react';
-import {Text} from 'react-native';
-import {View, Image, TouchableHighlight, StyleSheet} from 'react-native';
+import {Text, View, Image, TouchableHighlight, StyleSheet} from 'react-native';
+// import {Link} from 'react-router-native';
+
+import styles from '../styles';
+import Bottom from './bottomTab';
+
+const internalStyle = StyleSheet.create({
+  successMessage: {
+    fontSize: 18,
+    color: '#FFFFFF',
+    letterSpacing: 1,
+  },
+  successDescription: {
+    fontSize: 18,
+    color: '#FFFFFF',
+    letterSpacing: 1,
+    paddingLeft: 32,
+    paddingRight: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
+  },
+  successApproval: {
+    fontSize: 9.5,
+    color: 'white',
+    marginTop: 10,
+    letterSpacing: 2,
+  },
+
+  profile: {
+    fontSize: 18,
+    color: '#FFFFFF',
+    letterSpacing: 1,
+  },
+});
 
 class Success extends React.Component {
+  componentDidMount() {
+    console.log('hit up', this.props.match.params.completedId);
+  }
+
+  onPressToDares = () => {
+    const {history} = this.props;
+    history.push('/');
+  };
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>DARE . INC</Text>
         <Image style={styles.image} source={require('./images/football.jpg')} />
-        <Text style={styles.textStyle}>Video successfully uploaded</Text>
-        <Text style={styles.textStyle}>
-          Points will be added to your profile after approval
+        <Text style={internalStyle.successMessage}>
+          Video successfully uploaded
         </Text>
-        <TouchableHighlight style={styles.button}>
+        <Text style={internalStyle.successDescription}>
+          {'Points will be added to your'}
+        </Text>
+
+        <Text style={internalStyle.profile}>profile after approval</Text>
+
+        <Text style={internalStyle.successApproval}>
+          {' '}
+          * it takes upto 24 hours for approval
+        </Text>
+        <TouchableHighlight onPress={this.onPressToDares} style={styles.button}>
           <Text style={styles.btnStyle}>Take other dares</Text>
         </TouchableHighlight>
+        <View>
+          <Bottom />
+        </View>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  title: {
-    // flex: 1,
-    marginBottom: 50,
-    color: 'green',
-    fontWeight: 'bold',
-    fontSize: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    // flexDirection: 'column',
-  },
-  image: {
-    height: 280,
-    width: 300,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 20,
-  },
-  container: {
-    width: 500,
-    height: 500,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'black',
-  },
-
-  button: {
-    //flex: 1,
-    //alignSelf: 'stretch',
-    // flexDirection: 'column',
-    alignItems: 'center',
-    backgroundColor: 'green',
-    padding: 15,
-    borderRadius: 60,
-    borderWidth: 0.5,
-    marginTop: 40,
-    width: 300,
-  },
-
-  textStyle: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'white',
-    width: 200,
-  },
-
-  btnStyle: {
-    color: 'white',
-    padding: 4,
-  },
-});
 
 export default Success;

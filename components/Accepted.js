@@ -32,7 +32,9 @@ class Accepted extends React.Component {
   };
 
   onPressComplete = () => {
-    console.log('redirect to rohans');
+    const completedId = this.props.match.params.completedId;
+    const {history} = this.props;
+    history.push(`/upload/${completedId}`);
   };
 
   render() {

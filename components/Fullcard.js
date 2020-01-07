@@ -43,7 +43,7 @@ class Card extends React.Component {
         },
       );
       if (res.data) {
-        history.push(`/accepted/${dareId}`);
+        history.push(`/accepted/${dareId}/${res.data.id}`);
       }
     } catch (err) {
       console.log(err.response.data);

@@ -10,6 +10,8 @@ import Interests from './Interests';
 import {getToken} from '../helpers/auth';
 import Darepage from './Darepage';
 import Accepted from './Accepted';
+import Success from './Success';
+import Rohan from './Rohan';
 
 class CoreLayout extends Component {
   state = {
@@ -41,7 +43,10 @@ class CoreLayout extends Component {
           <Route exact path="/intrests" component={Interests} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Registration} />
-          <Route exact path="/accepted/:id" component={Accepted} />
+          <Route exact path="/accepted/:id/:completeId" component={Accepted} />
+          <Route exact path="/upload/:completedId" component={Rohan} />
+          <Route exact path="/completed/:completedId" component={Success} />
+          <Route exact path="/profile" component={Darepage} />
         </Switch>
       </View>
     );
