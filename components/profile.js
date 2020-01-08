@@ -1,8 +1,27 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, Image} from 'react-native';
+import axios from 'axios';
+import {getToken} from '../helpers/auth';
 
-export default class Profile extends Component {
+class ProfilePage extends React.Component {
+  state = {
+    profile: {},
+  };
+
+  componentDidMount = async () => {
+    console.log('hi');
+    const token = await getToken();
+    const res = await axios.get('http://192.168.0.51:3053/api/v1/app/dare/', {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    });
+    this.setState({profile: res.data});
+  };
+
   render() {
+    const {profile} = this.state;
+
     return (
       <View style={styles.background}>
         <Text style={styles.title}>DARE . INC</Text>
@@ -48,3 +67,5 @@ const styles = StyleSheet.create({
     margin: 25,
   },
 });
+
+export default ProfilePage;
