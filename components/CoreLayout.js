@@ -12,6 +12,7 @@ import Darepage from './Darepage';
 import Accepted from './Accepted';
 import Success from './Success';
 import MediaUploads from './MediaUpload';
+import ProfilePage from './profile';
 
 class CoreLayout extends Component {
   state = {
@@ -50,7 +51,7 @@ class CoreLayout extends Component {
             component={MediaUploads}
           />
           <Route exact path="/completed/:completeId" component={Success} />
-          <Route exact path="/profile" component={Darepage} />
+          <Route exact path="/profile" component={ProfilePage} />
         </Switch>
       </View>
     );

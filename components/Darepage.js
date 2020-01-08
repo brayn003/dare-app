@@ -4,7 +4,6 @@ import {
   Text,
   Image,
   ImageBackground,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
@@ -38,6 +37,12 @@ class Darepage extends Component {
     history.push(`/dare/${dareId}`);
   };
 
+  onPressProfile = () => {
+    console.log('hi there');
+    const {history} = this.props;
+    history.push('/profile');
+  };
+
   render() {
     const {dares} = this.state;
     return (
@@ -49,10 +54,12 @@ class Darepage extends Component {
                 <Text style={styles.heading}>DARE. INC</Text>
               </View>
               <View style={styles.profilepic}>
-                <Image
-                  source={require('./images/Cat.jpg')}
-                  style={styles.img}
-                />
+                <TouchableOpacity onPress={this.onPressProfile}>
+                  <Image
+                    source={require('./images/Cat.jpg')}
+                    style={styles.img}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
             <View style={styles.cardcon}>
