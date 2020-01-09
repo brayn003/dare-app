@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
   background: {
     width: 500,
     height: 500,
+    justifyContent: 'space-around',
     flex: 1,
 
     backgroundColor: 'black',
