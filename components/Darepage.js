@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {
   View,
   Text,
-  Image,
   ImageBackground,
   ScrollView,
   StyleSheet,
@@ -12,6 +11,7 @@ import {
 import axios from 'axios';
 import {SERVER_URL} from '../constants.json';
 import {getToken} from '../helpers/auth.js';
+// import styles from '../styles/index.js';
 
 class Darepage extends Component {
   state = {
@@ -45,6 +45,7 @@ class Darepage extends Component {
 
   render() {
     const {dares} = this.state;
+    console.log(dares);
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
@@ -55,7 +56,15 @@ class Darepage extends Component {
               </View>
               <View style={styles.profilepic}>
                 <TouchableOpacity onPress={this.onPressProfile}>
-                  <Text style={{color: '#FFF'}}>Profile</Text>
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontSize: 22,
+                      marginTop: 20,
+                      marginBottom: 30,
+                    }}>
+                    View Profile{' '}
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -97,7 +106,7 @@ class Darepage extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'black',
-    flex: -1,
+    flex: 1,
   },
   profilepic: {
     marginTop: 10,
@@ -107,11 +116,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   img: {
-    width: 64,
+    width: 20,
     height: 64,
     borderRadius: 50,
-    marginTop: 15,
-    marginRight: -250,
   },
   ScrollView: {
     marginHorizontal: 20,
@@ -136,7 +143,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignContent: 'center',
     height: 200,
-    width: 425,
+    width: 400,
     marginBottom: 55,
     borderRadius: 20,
     overflow: 'hidden',

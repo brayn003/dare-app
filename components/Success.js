@@ -85,9 +85,9 @@ class Success extends React.Component {
         <TouchableHighlight onPress={this.onPressToDares} style={styles.button}>
           <Text style={styles.btnStyle}>Take other dares</Text>
         </TouchableHighlight>
-        <View>
+        {/* <View>
           <Bottom />
-        </View>
+        </View> */}
       </View>
     );
   }

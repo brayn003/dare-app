@@ -74,7 +74,9 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   card: {
-    marginTop: 5,
+    marginTop: -95,
+    // flex: 1,
+    // alignItems: 'center',
   },
 });
 

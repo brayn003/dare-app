@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Image} from 'react-native';
+import {StyleSheet, View, Text, Image, TouchableHighlight} from 'react-native';
 
 import {SERVER_URL} from '../constants.json';
 import axios from 'axios';
@@ -21,15 +21,21 @@ class ProfilePage extends React.Component {
     this.setState({profile: res.data});
   };
 
+  onClickReject = () => {
+    const {history} = this.props;
+    history.push('/');
+  };
+
   render() {
     const {profile} = this.state;
     return (
       <View style={styles.background}>
-        <Text style={styles.title}>DARE . INC</Text>
-
+        <TouchableHighlight onPress={this.onClickReject}>
+          <Text style={styles.title}>DARE . INC</Text>
+        </TouchableHighlight>
         <Image
           style={styles.profilepic}
-          source={require('./images/profilepic.jpg')}
+          source={require('./images/profile.jpg')}
         />
         <Text style={styles.interests}>
           {(profile.interests || []).map(i => i.title).join(' | ')}
@@ -55,8 +61,7 @@ const styles = StyleSheet.create({
     width: 500,
     height: 500,
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+
     backgroundColor: 'black',
   },
   title: {
@@ -73,7 +78,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 15,
-    margin: 25,
   },
 });
 
