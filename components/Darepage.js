@@ -55,10 +55,7 @@ class Darepage extends Component {
               </View>
               <View style={styles.profilepic}>
                 <TouchableOpacity onPress={this.onPressProfile}>
-                  <Image
-                    source={require('./images/Cat.jpg')}
-                    style={styles.img}
-                  />
+                  <Text style={{color: '#FFF'}}>Profile</Text>
                 </TouchableOpacity>
               </View>
             </View>

@@ -8,10 +8,12 @@ import {
   SafeAreaView,
   ScrollView,
   TouchableOpacity,
+  TouchableHighlight,
 } from 'react-native';
 import axios from 'axios';
 import {SERVER_URL} from '../constants.json';
 import {getToken} from '../helpers/auth.js';
+import OutlineButton from './commons/Button.js';
 
 class Interests extends React.Component {
   state = {
@@ -31,6 +33,28 @@ class Interests extends React.Component {
     } catch (err) {
       console.log('err', err.response);
     }
+  };
+
+  onPressProfile = () => {
+    const {history} = this.props;
+    console.log(this.props);
+    if (history) {
+      history.push('/profile');
+    }
+  };
+
+  onPressSubmit = async () => {
+    const {selected} = this.state;
+    const token = await getToken();
+    const {history} = this.props;
+    await axios.post(
+      `${SERVER_URL}/api/v1/app/subscriptions`,
+      {interests: selected},
+      {
+        headers: {Authorization: `Token ${token}`},
+      },
+    );
+    history.push('/');
   };
 
   onPressCard = interestId => {
@@ -58,12 +82,12 @@ class Interests extends React.Component {
                   <Text style={styles.heading}> DARE. INC</Text>
                   <Text style={styles.title}> INTEREST</Text>
                 </View>
-                <View>
+                <TouchableOpacity onPress={this.onPressProfile}>
                   <Image
                     source={require('./images/profile.jpg')}
                     style={styles.img}
                   />
-                </View>
+                </TouchableOpacity>
               </View>
               {interests.map(interest => {
                 return (
@@ -90,6 +114,11 @@ class Interests extends React.Component {
                 );
               })}
             </View>
+            <OutlineButton
+              onPress={this.onPressSubmit}
+              style={{marginBottom: 32}}>
+              Submit
+            </OutlineButton>
           </View>
         </ScrollView>
       </SafeAreaView>
