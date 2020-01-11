@@ -56,7 +56,13 @@ class Darepage extends Component {
               </View>
               <View style={styles.profilepic}>
                 <TouchableOpacity onPress={this.onPressProfile}>
-                  <Text style={{color: 'white', fontSize: 22, marginTop: 20, marginBottom: 30}}>
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontSize: 22,
+                      marginTop: 20,
+                      marginBottom: 30,
+                    }}>
                     View Profile{' '}
                   </Text>
                 </TouchableOpacity>

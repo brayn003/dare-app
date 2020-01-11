@@ -12,7 +12,7 @@ import Darepage from './Darepage';
 import Accepted from './Accepted';
 import Success from './Success';
 import MediaUploads from './MediaUpload';
-import ProfilePage from './Profile';
+import ProfilePage from './profile';
 
 class CoreLayout extends Component {
   state = {

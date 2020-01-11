@@ -7,7 +7,7 @@ import {getToken} from '../helpers/auth';
 import {SERVER_URL} from '../constants.json';
 
 import styles from '../styles';
-import Bottom from './bottomTab';
+// import Bottom from './bottomTab';
 
 const internalStyle = StyleSheet.create({
   successMessage: {

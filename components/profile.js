@@ -5,7 +5,7 @@ import {SERVER_URL} from '../constants.json';
 import axios from 'axios';
 import {getToken} from '../helpers/auth';
 
-class ProfilePage extends React.Component {
+class ProfilePage extends Component {
   state = {
     profile: {},
   };
